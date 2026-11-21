@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermomix Risotto Quick Reference: Rice, Models, Ratios, Fixes</title>
+<meta name="description" content="Sortable lookup tables for Thermomix risotto: 14 rice types compared, TM5/TM6/TM7/TM31 accessory limits, stock-ratio calculator, 14 flavour variations, add-in safe temperatures, a symptom diagnoser and storage rules.">
+<style>
+:root{
+  --bg:#fbfaf7; --fg:#1d1b18; --muted:#6b665e; --line:#e3ded4; --card:#ffffff;
+  --accent:#9a3b12; --accent-bg:#fdf1e8; --head:#f3efe6;
+  --core:#1f6b3a; --core-bg:#e6f4ea; --also:#1f4e8c; --also-bg:#e8f0fb;
+  --sit:#8a5a00; --sit-bg:#fdf3dc; --no:#9b1c1c; --no-bg:#fbe9e9;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14130f; --fg:#ece8df; --muted:#a59f93; --line:#35322b; --card:#1d1b16;
+    --accent:#f0a273; --accent-bg:#2a1f17; --head:#24221c;
+    --core:#7fd29a; --core-bg:#163222; --also:#8db6f0; --also-bg:#172338;
+    --sit:#e8c36a; --sit-bg:#33290f; --no:#f19a9a; --no-bg:#391a1a;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px}
+h1{font-size:1.75rem;line-height:1.2;margin:0 0 6px}
+.sub{color:var(--muted);margin:0;font-size:.95rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin:14px -16px 20px;padding:8px 16px;display:flex;gap:6px;flex-wrap:wrap}
+nav a{font-size:.82rem;text-decoration:none;color:var(--fg);border:1px solid var(--line);background:var(--card);padding:3px 10px;border-radius:999px}
+nav a:hover{border-color:var(--accent);color:var(--accent)}
+h2{font-size:1.25rem;margin:34px 0 4px;scroll-margin-top:60px}
+.hint{color:var(--muted);font-size:.88rem;margin:0 0 10px}
+.callout{background:var(--accent-bg);border-left:4px solid var(--accent);border-radius:6px;padding:12px 16px}
+.callout h2{margin:0 0 6px;font-size:1.05rem}
+.callout ul{margin:0;padding-left:18px}
+.callout li{margin:2px 0}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.controls input,.controls select{font:inherit;font-size:.9rem;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+.controls input[type=search]{min-width:220px;flex:1}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+thead th{background:var(--head);white-space:nowrap;position:sticky;top:0}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--head)}
+th button{all:unset;cursor:pointer;font-weight:600}
+th button::after{content:" \2195";color:var(--muted);font-size:.8em}
+th[aria-sort=ascending] button::after{content:" \25B2";color:var(--accent)}
+th[aria-sort=descending] button::after{content:" \25BC";color:var(--accent)}
+th button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+td strong{font-weight:600}
+.pill{display:inline-block;font-size:.76rem;font-weight:600;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.p-core{background:var(--core-bg);color:var(--core)}
+.p-also{background:var(--also-bg);color:var(--also)}
+.p-sit{background:var(--sit-bg);color:var(--sit)}
+.p-no{background:var(--no-bg);color:var(--no)}
+.p-guide{background:var(--head);color:var(--muted);border:1px solid var(--line)}
+.p-ext{background:var(--sit-bg);color:var(--sit)}
+.muted{color:var(--muted)}
+.count{font-size:.82rem;color:var(--muted);margin:6px 2px 0}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.card h3{margin:0 0 8px;font-size:1rem}
+label{font-size:.85rem;display:block;margin:8px 0 3px;color:var(--muted)}
+.card input,.card select{font:inherit;width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
+.result{margin-top:12px;padding:10px 12px;background:var(--head);border-radius:6px;font-size:.92rem;min-height:2.6em}
+.result .big{font-size:1.15rem;font-weight:700}
+.note{font-size:.84rem;color:var(--muted);margin:8px 0 0}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+footer ul{padding-left:18px;margin:6px 0}
+@media (max-width:640px){
+  h1{font-size:1.45rem}
+  nav{margin:12px -16px 16px}
+}
+@media print{
+  nav,.controls,.card input,.card select{display:none}
+  body{background:#fff;color:#000}
+  .table-wrap{overflow:visible;border:1px solid #999}
+  thead th{position:static}
+  a{color:#000}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Thermomix Risotto Quick Reference</h1>
+  <p class="sub">Sortable, filterable lookup tables: rice types, model limits, stock ratios, flavour variations, safe temperatures, fixes and storage. Updated 21 Nov 2026.</p>
+  <p class="sub">Data compiled from and expanded on this guide: <a href="https://kitchenmemo.com/thermomix-risotto/">foolproof Thermomix risotto method for TM5, TM6, TM7 &amp; TM31</a>.</p>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#quick">Quick reference</a>
+  <a href="#rice">Rice finder</a>
+  <a href="#models">Models</a>
+  <a href="#ratio">Stock calculator</a>
+  <a href="#variations">Variations</a>
+  <a href="#safe">Safe temps</a>
+  <a href="#fix">Fix it</a>
+  <a href="#storage">Storage</a>
+  <a href="#diet">Diets</a>
+</nav>
+
+<section id="quick" class="callout" aria-labelledby="quick-h">
+  <h2 id="quick-h">Quick reference</h2>
+  <ul>
+    <li><strong>Rice:</strong> Arborio, Carnaroli or Vialone Nano for traditional-style risotto.</li>
+    <li><strong>Butterfly whisk:</strong> never above speed 4, on every model (TM5, TM6, TM7, TM31).</li>
+    <li><strong>TM6 at 95&nbsp;&deg;C / 200&nbsp;&deg;F or above:</strong> simmering basket on the lid instead of the black measuring cup. Do not copy this rule to other models.</li>
+    <li><strong>Bowl limit:</strong> 2.2&nbsp;L max on TM6 and TM7; TM5 and TM31 follow the fill marking in their manuals.</li>
+    <li><strong>No universal ratio:</strong> trial stock-to-rice points are 2.5:1, 3:1 and 3.5:1 (mL stock per g dry rice). Test, then record.</li>
+    <li><strong>Judge after resting:</strong> check grains and sauce separately, and again at 3, 5 and 10 minutes.</li>
+    <li><strong>Chicken add-in:</strong> 165&nbsp;&deg;F / 74&nbsp;&deg;C internal, checked with a thermometer, not the timer.</li>
+    <li><strong>Leftovers:</strong> chill within 1 hour, eat within 24 hours, reheat once until steaming hot.</li>
+  </ul>
+</section>
+
+<!-- ============ RICE ============ -->
+<section id="rice" aria-labelledby="rice-h">
+  <h2 id="rice-h">Rice finder: 14 options compared</h2>
+  <p class="hint">Click a column header to sort. Italian grade (comune, semifino, fino, superfino) reflects grain length-to-width, not quality. Stovetop times are reference figures from packs and cooking guides, not Thermomix settings.</p>
+  <div class="controls">
+    <input type="search" placeholder="Search rice, use or trait..." aria-label="Search rice table" data-table="rice-table">
+    <select aria-label="Filter by risotto fit" data-table="rice-table" data-key="fit">
+      <option value="">All risotto fits</option>
+      <option value="core">Core risotto rice</option>
+      <option value="also">Also used for risotto</option>
+      <option value="sit">Situational</option>
+      <option value="no">Not for creamy risotto</option>
+    </select>
+    <select aria-label="Filter by Italian grade" data-table="rice-table" data-key="grade">
+      <option value="">All grades</option>
+      <option value="superfino">Superfino</option>
+      <option value="fino">Fino</option>
+      <option value="semifino">Semifino</option>
+      <option value="comune">Comune</option>
+      <option value="other">Not graded / non-Italian</option>
+    </select>
+  </div>
+  <div class="table-wrap">
+  <table id="rice-table" class="sortable">
+    <thead><tr>
+      <th data-type="text"><button type="button">Rice</button></th>
+      <th data-type="text"><button type="button">Grade</button></th>
+      <th data-type="num"><button type="button">Risotto fit</button></th>
+      <th>Grain &amp; behaviour</th>
+      <th>Best for</th>
+      <th>Watch out</th>
+      <th data-type="num"><button type="button">Stovetop ref. (min)</button></th>
+    </tr></thead>
+    <tbody>
+      <tr data-fit="core" data-grade="superfino">
+        <td><strong>Arborio</strong></td><td>Superfino</td>
+        <td data-sort="1"><span class="pill p-core">Core</span></td>
+        <td>Large, plump grains; high starch release gives a creamy result; good cooking resistance.</td>
+        <td>Everyday risotto; arancini</td>
+        <td>Narrow doneness window. Start checking grains early.</td>
+        <td data-sort="15">15&ndash;16</td>
+      </tr>
+      <tr data-fit="core" data-grade="superfino">
+        <td><strong>Carnaroli</strong></td><td>Superfino</td>
+        <td data-sort="1"><span class="pill p-core">Core</span></td>
+        <td>Large grains that hold their shape (higher amylose); wide cooking window; slightly less starch released than Arborio.</td>
+        <td>Risotto where separate, firm grains are wanted; fine risottos</td>
+        <td>Runs a little longer than Arborio; a bit less creamy by comparison in some tastings.</td>
+        <td data-sort="18">18&ndash;22</td>
+      </tr>
+      <tr data-fit="core" data-grade="semifino">
+        <td><strong>Vialone Nano</strong></td><td>Semifino</td>
+        <td data-sort="1"><span class="pill p-core">Core</span></td>
+        <td>Small, round, squat grains with a wide &ldquo;pearl&rdquo; centre; absorbs seasoning and liquid well; silky texture with a slight bite. PGI Veronese.</td>
+        <td>Vegetable and seafood risotto; looser Veneto-style (all&rsquo;onda)</td>
+        <td>Harder to find outside Italy.</td>
+        <td data-sort="13">13&ndash;15</td>
+      </tr>
+      <tr data-fit="also" data-grade="semifino">
+        <td><strong>Maratelli</strong></td><td>Semifino</td>
+        <td data-sort="2"><span class="pill p-also">Also used</span></td>
+        <td>Historic early-ripening variety (1914); higher amylose, so grains stay more separate, similar to Carnaroli. Ranked with the best by some sources.</td>
+        <td>Traditional risotto; soups</td>
+        <td>Less documented than the big three. Test your ratio.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="also" data-grade="superfino">
+        <td><strong>Baldo</strong></td><td>Superfino</td>
+        <td data-sort="2"><span class="pill p-also">Also used</span></td>
+        <td>Arborio &times; Stirpe 136 cross; medium grain, slightly longer and more slender than Arborio; keeps its texture and absorbs flavours.</td>
+        <td>Flavour-absorbing risotto (e.g. tomato); rice salads; sides</td>
+        <td>Some guides say it is less creamy than the core three. Easy to overcook.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="also" data-grade="superfino">
+        <td><strong>Roma</strong></td><td>Superfino</td>
+        <td data-sort="2"><span class="pill p-also">Also used</span></td>
+        <td>Large, rounded, pearly grains; starch-rich; absorbs flavours well; cooks in a shorter time.</td>
+        <td>Creamy risotto; suppl&igrave;; timbales</td>
+        <td>Quicker cooking. Check early.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="also" data-grade="fino">
+        <td><strong>Sant&rsquo;Andrea</strong></td><td>Fino</td>
+        <td data-sort="2"><span class="pill p-also">Also used</span></td>
+        <td>Smaller grain than other risotto rice but outstanding cooking resistance; easy to cook al dente; makes a denser risotto. PDO Baraggia areas.</td>
+        <td>Dense risotto; panissa; soups</td>
+        <td>Often cooked without toasting first.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="also" data-grade="fino">
+        <td><strong>Ribe</strong></td><td>Fino</td>
+        <td data-sort="2"><span class="pill p-also">Also used</span></td>
+        <td>Long, slender grain with lower starch content.</td>
+        <td>Looser risotto all&rsquo;onda; soups; rice salads</td>
+        <td>Less creamy than the core three.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="sit" data-grade="semifino">
+        <td><strong>Padano</strong></td><td>Semifino</td>
+        <td data-sort="3"><span class="pill p-sit">Situational</span></td>
+        <td>Rounded medium grain; absorbs water quickly and releases some starch.</td>
+        <td>Soups; simple sides and pilaf</td>
+        <td>Less typical for risotto than the varieties above.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="sit" data-grade="other">
+        <td><strong>Integrale (brown risotto rice)</strong></td><td>Whole grain</td>
+        <td data-sort="3"><span class="pill p-sit">Situational</span></td>
+        <td>Keeps hull/germ, so more fibre and nutrients; tender but slightly crumbly; not very creamy until the last minutes in one tasting.</td>
+        <td>Wholegrain risotto where full creaminess is not the goal</td>
+        <td>Longest cook: about 10+ minutes more than white varieties in one comparison.</td>
+        <td data-sort="99">+10 vs white</td>
+      </tr>
+      <tr data-fit="no" data-grade="comune">
+        <td><strong>Originario</strong></td><td>Comune</td>
+        <td data-sort="4"><span class="pill p-no">Not risotto</span></td>
+        <td>Small, round grain that absorbs liquid and cooks quickly.</td>
+        <td>Soups; rice desserts</td>
+        <td>Will not give a traditional risotto texture.</td>
+        <td data-sort="12">~12</td>
+      </tr>
+      <tr data-fit="no" data-grade="other">
+        <td><strong>Venere (black rice)</strong></td><td>Pigmented</td>
+        <td data-sort="4"><span class="pill p-no">Not risotto</span></td>
+        <td>Deep purple, chewy, nutty and earthy; does not give a starchy, creamy sauce.</td>
+        <td>Light, bold-flavoured rice dishes</td>
+        <td>Different liquid and timing. Test separately.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="no" data-grade="other">
+        <td><strong>Basmati</strong></td><td>Long grain (non-Italian)</td>
+        <td data-sort="4"><span class="pill p-no">Not risotto</span></td>
+        <td>Long grain; produces more separate grains than risotto rice. Usable for an adapted Thermomix rice dish, not a cohesive risotto.</td>
+        <td>Adapted Thermomix rice dishes</td>
+        <td>Liquid ratio and time must be established separately. Do not reuse a risotto ratio.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+      <tr data-fit="no" data-grade="other">
+        <td><strong>Cauliflower rice</strong></td><td>Vegetable (not a grain)</td>
+        <td data-sort="4"><span class="pill p-no">Not risotto</span></td>
+        <td>Finely chopped vegetable; no rice-style starch or hydration behaviour.</td>
+        <td>Low-carb &ldquo;risotto&rdquo; with its own method</td>
+        <td>Watch moisture release and timing. Do not reuse a risotto ratio.</td>
+        <td data-sort="999">&mdash;</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="count" id="rice-table-count" aria-live="polite"></p>
+  <p class="note">Rinsing: many traditional recipes use unrinsed risotto rice. One study found washing had no large effect on texture in the rice it tested, but it was not a Thermomix risotto comparison. Pick one routine and keep it the same every batch.</p>
+</section>
+
+<!-- ============ MODELS ============ -->
+<section id="models" aria-labelledby="models-h">
+  <h2 id="models-h">Model &amp; accessory lookup</h2>
+  <p class="hint">Rules differ by model. Always check the manual for your machine before applying anything here.</p>
+  <div class="table-wrap">
+  <table id="models-table" class="sortable">
+    <thead><tr>
+      <th data-type="text"><button type="button">Model</button></th>
+      <th>Butterfly whisk</th>
+      <th>Bowl limit</th>
+      <th>Lid / cup / basket</th>
+      <th>Risotto settings</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><strong>TM5</strong></td><td>Max speed 4</td><td>Respect the maximum fill marking</td><td>Follow the TM5 manual</td><td>Use a compatible, tested recipe</td></tr>
+      <tr><td><strong>TM6</strong></td><td>Max speed 4</td><td>2.2&nbsp;L maximum</td><td><strong>At 95&nbsp;&deg;C / 200&nbsp;&deg;F or above:</strong> simmering basket on top of the lid instead of the black measuring cup (steam must escape)</td><td>Use a compatible, tested recipe</td></tr>
+      <tr><td><strong>TM7</strong></td><td>Max speed 4</td><td>2.2&nbsp;L maximum</td><td>Redesigned lid and accessories: follow the TM7 manual, not TM5/TM6 steps</td><td>Use a compatible, tested recipe</td></tr>
+      <tr><td><strong>TM31</strong></td><td>Max speed 4</td><td>Follow the original manual&rsquo;s fill instructions</td><td>Follow the TM31 manual</td><td>Use a compatible, tested recipe</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Official manuals: <a href="https://www.vorwerk.com/gb/en/c/home/service/thermomix/instruction-manuals">Vorwerk instruction manuals</a>. Avoid dense or sticky ingredients that could block or damage the butterfly whisk.</p>
+</section>
+
+<!-- ============ RATIO ============ -->
+<section id="ratio" aria-labelledby="ratio-h">
+  <h2 id="ratio-h">Stock calculator &amp; test log</h2>
+  <p class="hint">Trial points for comparing batches, not validated recipe ratios. Use one basis throughout: mL of stock per gram of dry rice.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Stock needed</h3>
+      <label for="rice-g">Dry rice (g)</label>
+      <input id="rice-g" type="number" inputmode="decimal" min="1" step="1" value="300">
+      <label for="custom-r">Optional custom ratio (mL per g)</label>
+      <input id="custom-r" type="number" inputmode="decimal" min="0.5" max="6" step="0.1" placeholder="e.g. 3.2">
+      <div class="result" id="ratio-out" aria-live="polite"></div>
+      <p class="note">Keep total contents under your model&rsquo;s maximum fill mark. Halving or doubling needs a fresh liquid and cooking check.</p>
+    </div>
+    <div class="card">
+      <h3>Rest-time checkpoints</h3>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rest</th><th>What to judge</th></tr></thead>
+        <tbody>
+          <tr><td><strong>0 min</strong></td><td>Sauce flow, grain firmness</td></tr>
+          <tr><td><strong>3 min</strong></td><td>Change in thickness and grain texture</td></tr>
+          <tr><td><strong>5 min</strong></td><td>Still creamy and cohesive?</td></tr>
+          <tr><td><strong>10 min</strong></td><td>Too thick?</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">Target: tender outside, slight bite in the centre, glossy sauce that spreads gently on a plate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VARIATIONS ============ -->
+<section id="variations" aria-labelledby="var-h">
+  <h2 id="var-h">Flavour variations: 14 compared</h2>
+  <p class="hint">&ldquo;Guide&rdquo; rows follow the source guide. &ldquo;Extended&rdquo; rows apply the same principles (moisture, density, cooking speed) or common Italian pairings and need testing on your machine.</p>
+  <div class="controls">
+    <input type="search" placeholder="Search variations..." aria-label="Search variations" data-table="var-table">
+    <select aria-label="Filter by basis" data-table="var-table" data-key="basis">
+      <option value="">All</option>
+      <option value="guide">Guide</option>
+      <option value="extended">Extended</option>
+    </select>
+  </div>
+  <div class="table-wrap">
+  <table id="var-table" class="sortable">
+    <thead><tr>
+      <th data-type="text"><button type="button">Variation</button></th>
+      <th data-type="text"><button type="button">Basis</button></th>
+      <th>When to add</th>
+      <th>Liquid / moisture note</th>
+      <th>Main risk</th>
+    </tr></thead>
+    <tbody>
+      <tr data-basis="guide"><td><strong>Mushroom</strong></td><td><span class="pill p-guide">Guide</span></td><td>Per your mushroom prep; cooking them separately lets moisture escape first</td><td>Releases moisture; matters most when stock is already near the top of the ratio</td><td>Watery risotto</td></tr>
+      <tr data-basis="guide"><td><strong>Truffle</strong></td><td><span class="pill p-guide">Guide</span></td><td>Mushroom base, truffle at the finishing stage (by form and strength)</td><td>Same as the base recipe</td><td>Truffle overpowering the rice</td></tr>
+      <tr data-basis="guide"><td><strong>Chicken</strong></td><td><span class="pill p-guide">Guide</span></td><td>Validated chicken sequence; separately or by a method that cooks it through</td><td>Account for chicken quantity and moisture</td><td>Unsafe chicken (needs 165&nbsp;&deg;F / 74&nbsp;&deg;C); rice going soft</td></tr>
+      <tr data-basis="guide"><td><strong>Prawn</strong></td><td><span class="pill p-guide">Guide</span></td><td>Near the end, after the base is made; adjust for prawn size</td><td>Avoid unnecessary extra stock</td><td>Overcooked prawns</td></tr>
+      <tr data-basis="guide"><td><strong>Seafood mix</strong></td><td><span class="pill p-guide">Guide</span></td><td>By each item&rsquo;s own cooking time</td><td>Account for liquid released during cooking</td><td>Ruining delicate seafood texture</td></tr>
+      <tr data-basis="guide"><td><strong>Vegetable</strong></td><td><span class="pill p-guide">Guide</span></td><td>By vegetable density and cooking time</td><td>Depends on vegetable moisture</td><td>Losing the intended grain texture</td></tr>
+      <tr data-basis="guide"><td><strong>Vegetarian</strong></td><td><span class="pill p-guide">Guide</span></td><td>Vegetable stock from the start</td><td>Keep the tested base balance</td><td>Cheese not vegetarian (traditional Parmesan can contain animal rennet)</td></tr>
+      <tr data-basis="guide"><td><strong>Vegan</strong></td><td><span class="pill p-guide">Guide</span></td><td>Plant-based butter, vegetable stock, vegan Parmesan alternative</td><td>Keep the tested base balance</td><td>A finishing ingredient that is not vegan</td></tr>
+      <tr data-basis="guide"><td><strong>Pumpkin</strong></td><td><span class="pill p-guide">Guide</span></td><td>Prepare separately, or use a validated integrated method</td><td>Account for pumpkin moisture</td><td>Blocking the mixing attachment</td></tr>
+      <tr data-basis="guide"><td><strong>Sweet potato</strong></td><td><span class="pill p-guide">Guide</span></td><td>Treat like pumpkin: softens and adds body</td><td>Account for added body and moisture</td><td>Dense or sticky pieces obstructing the whisk</td></tr>
+      <tr data-basis="extended"><td><strong>Peas</strong></td><td><span class="pill p-ext">Extended</span></td><td>Late; they need less cooking than dense vegetables</td><td>Minimal</td><td>Overcooking and colour loss</td></tr>
+      <tr data-basis="extended"><td><strong>Leafy greens</strong></td><td><span class="pill p-ext">Extended</span></td><td>Late; they need only a short cooking period</td><td>Wilt and release a little liquid</td><td>Slimy, overcooked greens</td></tr>
+      <tr data-basis="extended"><td><strong>Saffron (Milanese-style)</strong></td><td><span class="pill p-ext">Extended</span></td><td>Follow a validated recipe for your model</td><td>Same as the base recipe</td><td>Italian guides pair classic risottos like this with Carnaroli or Arborio</td></tr>
+      <tr data-basis="extended"><td><strong>Tomato</strong></td><td><span class="pill p-ext">Extended</span></td><td>Follow a validated recipe for your model</td><td>Count tomato as extra liquid and test a lower stock point</td><td>Watery result; Baldo or Roma suit flavour-absorbing styles like this</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="count" id="var-table-count" aria-live="polite"></p>
+</section>
+
+<!-- ============ SAFE TEMPS ============ -->
+<section id="safe" aria-labelledby="safe-h">
+  <h2 id="safe-h">Add-in safe minimum temperatures</h2>
+  <p class="hint">Use a food thermometer. A timer, or the risotto being done, does not prove an add-in is safe.</p>
+  <div class="table-wrap">
+  <table id="safe-table" class="sortable">
+    <thead><tr>
+      <th data-type="text"><button type="button">Add-in</button></th>
+      <th data-type="num"><button type="button">Min. internal temp</button></th>
+      <th>Notes</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><strong>Chicken, turkey, other poultry</strong></td><td data-sort="165">165&nbsp;&deg;F / 74&nbsp;&deg;C</td><td>All cuts and ground poultry</td></tr>
+      <tr><td><strong>Ground beef, pork, lamb, veal; sausage</strong></td><td data-sort="160">160&nbsp;&deg;F / 71&nbsp;&deg;C</td><td>Poultry sausage: 165&nbsp;&deg;F</td></tr>
+      <tr><td><strong>Whole beef, pork, veal, lamb (steak, chop, roast)</strong></td><td data-sort="145">145&nbsp;&deg;F / 63&nbsp;&deg;C</td><td>3-minute rest time</td></tr>
+      <tr><td><strong>Fish fillets</strong></td><td data-sort="145">145&nbsp;&deg;F / 63&nbsp;&deg;C</td><td>Or until opaque and flaking easily with a fork</td></tr>
+      <tr><td><strong>Prawns / shrimp, lobster, crab</strong></td><td data-sort="0">Visual check</td><td>Flesh pearly and opaque</td></tr>
+      <tr><td><strong>Scallops</strong></td><td data-sort="0">Visual check</td><td>Flesh milky white or opaque and firm</td></tr>
+      <tr><td><strong>Clams, oysters, mussels</strong></td><td data-sort="0">Visual check</td><td>Cook until shells open</td></tr>
+      <tr><td><strong>Egg dishes</strong></td><td data-sort="160">160&nbsp;&deg;F / 71&nbsp;&deg;C</td><td>Cook eggs until yolk and white are firm</td></tr>
+      <tr><td><strong>Leftovers and casseroles</strong></td><td data-sort="165">165&nbsp;&deg;F / 74&nbsp;&deg;C</td><td>USDA lists 165&nbsp;&deg;F for any leftovers; for rice, reheat once until steaming hot throughout</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Source: <a href="https://ask.fsis.usda.gov/s/article/What-is-a-safe-internal-temperature-for-cooking-meat-and-poultry">USDA FSIS safe minimum temperatures</a>, cross-checked against FDA and foodsafety.gov charts.</p>
+</section>
+
+<!-- ============ FIX ============ -->
+<section id="fix" aria-labelledby="fix-h">
+  <h2 id="fix-h">Fix it: symptom &rarr; cause &rarr; remedy</h2>
+  <p class="hint">Rule one: assess grains and sauce separately before adding stock or cooking longer.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>2-question diagnoser</h3>
+      <label for="d-grain">Grains</label>
+      <select id="d-grain">
+        <option value="cooked">Tender, slight bite in the centre</option>
+        <option value="raw">Hard, crunchy or chalky centre</option>
+        <option value="broken">Collapsed, broken or pasty</option>
+      </select>
+      <label for="d-sauce">Sauce</label>
+      <select id="d-sauce">
+        <option value="loose">Too loose or watery</option>
+        <option value="stiff">Too stiff or thick</option>
+        <option value="ok">Creamy and cohesive</option>
+      </select>
+      <div class="result" id="d-out" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="controls" style="margin-top:14px">
+    <input type="search" placeholder="Search symptoms (e.g. gluey, bland, oily)..." aria-label="Search troubleshooting table" data-table="fix-table">
+  </div>
+  <div class="table-wrap">
+  <table id="fix-table" class="sortable">
+    <thead><tr>
+      <th data-type="text"><button type="button">Symptom</button></th>
+      <th>Likely cause</th>
+      <th>What to do now</th>
+      <th>Prevent it</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><strong>Rice soup / watery</strong></td><td>Too much stock, or not enough reduction</td><td>Check whether the grains are cooked first, then reduce liquid carefully</td><td>Measure stock accurately</td></tr>
+      <tr><td><strong>Raw or crunchy grains</strong></td><td>Not enough hydration or cooking</td><td>Add a measured amount of suitable stock if needed and keep cooking</td><td>Match liquid to rice variety and quantity</td></tr>
+      <tr><td><strong>Gluey or stodgy</strong></td><td>Overcooking, too much agitation, broken grains</td><td>Stop aggressive mixing; adjust consistency only if possible (broken grains cannot be restored)</td><td>Control time, speed and mixing; check doneness early</td></tr>
+      <tr><td><strong>Too stiff</strong></td><td>Too much absorption while cooking or resting</td><td>Stir in a small amount of warm stock, gently</td><td>Judge consistency after resting</td></tr>
+      <tr><td><strong>Bland</strong></td><td>Weak stock or under-seasoning</td><td>Taste and adjust seasoning</td><td>Use well-seasoned stock</td></tr>
+      <tr><td><strong>Butterfly whisk struggling</strong></td><td>Blocked attachment or unsuitable ingredients</td><td>Stop the machine and inspect the whisk safely</td><td>Stay at speed 4 or below; avoid dense or sticky add-ins</td></tr>
+      <tr><td><strong>Mushrooms made it watery</strong></td><td>Moisture released by mushrooms</td><td>Check free liquid; avoid adding more stock</td><td>Cook mushrooms separately when appropriate</td></tr>
+      <tr><td><strong>Cheese went oily</strong></td><td>Too much heat or poor finishing</td><td>Stop heating and assess the separated mixture</td><td>Use a controlled finishing method, off the heat</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="count" id="fix-table-count" aria-live="polite"></p>
+</section>
+
+<!-- ============ STORAGE ============ -->
+<section id="storage" aria-labelledby="storage-h">
+  <h2 id="storage-h">Storage, freezing &amp; reheating</h2>
+  <p class="hint">Cooked rice can carry <em>Bacillus cereus</em> spores that survive cooking; speed of cooling matters.</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Stage</th><th>What to do</th><th>Limit</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Right after cooking</strong></td><td>Move leftovers out of the hot Thermomix bowl</td><td>Do not leave in the bowl</td></tr>
+      <tr><td><strong>Cooling</strong></td><td>Divide into small, shallow portions</td><td>Within 1 hour</td></tr>
+      <tr><td><strong>Fridge</strong></td><td>Refrigerate promptly</td><td>Eat within 24 hours</td></tr>
+      <tr><td><strong>Freezer</strong></td><td>Cool rapidly, freeze individual labelled portions</td><td>Texture softens after thawing</td></tr>
+      <tr><td><strong>Defrost</strong></td><td>In the refrigerator</td><td>Not at room temperature</td></tr>
+      <tr><td><strong>Reheat</strong></td><td>Until steaming hot throughout</td><td>Once only</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Guidance: <a href="https://www.foodstandards.gov.scot/consumer-advice/food-safety/food-safety-in-the-kitchen/food-storage">Food Standards Scotland on storing rice</a>.</p>
+</section>
+
+<!-- ============ DIETS ============ -->
+<section id="diet" aria-labelledby="diet-h">
+  <h2 id="diet-h">Dietary swaps</h2>
+  <div class="table-wrap">
+  <table class="sortable" id="diet-table">
+    <thead><tr><th data-type="text"><button type="button">Need</button></th><th>Swap</th><th>Check</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Vegan</strong></td><td>Plant-based butter, vegetable stock, vegan Parmesan alternative</td><td>Every finishing ingredient is vegan</td></tr>
+      <tr><td><strong>Vegetarian</strong></td><td>Vegetable stock, suitable vegetarian cheese</td><td>Traditional Parmesan may use animal rennet</td></tr>
+      <tr><td><strong>Dairy-free</strong></td><td>Olive oil or another dairy-free fat</td><td>Flavour and richness change</td></tr>
+      <tr><td><strong>Gluten-free</strong></td><td>Gluten-free stock, labelled ingredients</td><td>Read packaged-ingredient labels</td></tr>
+      <tr><td><strong>Lower sodium</strong></td><td>Reduced-sodium stock, controlled salt</td><td>Taste before adding salt; Parmesan adds sodium too</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Notes.</strong></p>
+  <ul>
+    <li>This is a reference page, not a validated recipe. Exact speed, temperature, direction and time must come from a recipe tested for your Thermomix model.</li>
+    <li>Rice grades and cooking times vary between Italian guides; where sources disagree, the more conservative description is shown. Cooking times shown are stovetop or pack figures.</li>
+    <li>Variety data draws on <a href="https://www.sustainableeurice.eu/european-rice/varieties-in-italy/">Italian rice-variety information from Sustainable EU Rice</a> and published Italian rice guides.</li>
+  </ul>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  /* ---------- sortable tables ---------- */
+  function cellVal(cell,type){
+    var s=cell.getAttribute('data-sort');
+    if(s===null){s=cell.textContent.trim();}
+    if(type==='num'){var n=parseFloat(s);return isNaN(n)?999999:n;}
+    return s.toLowerCase();
+  }
+  document.querySelectorAll('table.sortable').forEach(function(t){
+    var heads=t.querySelectorAll('thead th');
+    heads.forEach(function(th,i){
+      var b=th.querySelector('button');
+      if(!b){return;}
+      b.addEventListener('click',function(){
+        var type=th.getAttribute('data-type')||'text';
+        var asc=th.getAttribute('aria-sort')!=='ascending';
+        heads.forEach(function(h){h.removeAttribute('aria-sort');});
+        th.setAttribute('aria-sort',asc?'ascending':'descending');
+        var tb=t.tBodies[0];
+        var rows=Array.prototype.slice.call(tb.rows);
+        rows.sort(function(a,c){
+          var x=cellVal(a.cells[i],type),y=cellVal(c.cells[i],type);
+          if(x<y){return asc?-1:1;}
+          if(x>y){return asc?1:-1;}
+          return 0;
+        });
+        rows.forEach(function(r){tb.appendChild(r);});
+      });
+    });
+  });
+
+  /* ---------- filters / search ---------- */
+  var tables={};
+  document.querySelectorAll('[data-table]').forEach(function(el){
+    var id=el.getAttribute('data-table');
+    (tables[id]=tables[id]||[]).push(el);
+  });
+  function applyFilters(id){
+    var t=document.getElementById(id);
+    if(!t){return;}
+    var controls=tables[id];
+    var shown=0,total=t.tBodies[0].rows.length;
+    Array.prototype.forEach.call(t.tBodies[0].rows,function(r){
+      var ok=true;
+      controls.forEach(function(c){
+        var v=(c.value||'').trim().toLowerCase();
+        if(!v){return;}
+        if(c.tagName==='SELECT'){
+          var key=c.getAttribute('data-key');
+          if((r.getAttribute('data-'+key)||'').toLowerCase()!==v){ok=false;}
+        }else if(r.textContent.toLowerCase().indexOf(v)===-1){ok=false;}
+      });
+      r.style.display=ok?'':'none';
+      if(ok){shown++;}
+    });
+    var out=document.getElementById(id+'-count');
+    if(out){out.textContent='Showing '+shown+' of '+total;}
+  }
+  Object.keys(tables).forEach(function(id){
+    tables[id].forEach(function(c){
+      c.addEventListener(c.tagName==='SELECT'?'change':'input',function(){applyFilters(id);});
+    });
+    applyFilters(id);
+  });
+
+  /* ---------- stock calculator ---------- */
+  var rice=document.getElementById('rice-g'),custom=document.getElementById('custom-r'),out=document.getElementById('ratio-out');
+  function calc(){
+    var g=parseFloat(rice.value);
+    if(!(g>0)){out.textContent='Enter the dry rice weight in grams.';return;}
+    var html='';
+    [[2.5,'Lower-liquid trial'],[3,'Standard-liquid trial'],[3.5,'Higher-liquid trial']].forEach(function(p){
+      html+='<div>'+p[1]+' ('+p[0]+':1): <span class="big">'+Math.round(g*p[0])+' mL</span></div>';
+    });
+    var c=parseFloat(custom.value);
+    if(c>0){html+='<div>Custom ('+c+':1): <span class="big">'+Math.round(g*c)+' mL</span></div>';}
+    out.innerHTML=html;
+  }
+  rice.addEventListener('input',calc);
+  custom.addEventListener('input',calc);
+  calc();
+
+  /* ---------- diagnoser ---------- */
+  var grain=document.getElementById('d-grain'),sauce=document.getElementById('d-sauce'),dout=document.getElementById('d-out');
+  var advice={
+    'cooked|loose':'Grains are done but the sauce is loose, which points to too much liquid for this batch. Let it rest first, since sauce keeps settling. Then reduce carefully. Do not add stock. Next time, measure stock exactly and test a lower ratio.',
+    'cooked|stiff':'Stir in a small amount of warm stock, gently, and judge again after resting. Next time, assess final consistency after the rest.',
+    'cooked|ok':'On target. Rest briefly, then serve. Note your settings and ratio so you can repeat it.',
+    'raw|loose':'Excess liquid with undercooked grains is a different problem from watery risotto with cooked grains. Do not add more stock. Keep cooking with an appropriate method and re-check the grains.',
+    'raw|stiff':'Likely under-hydrated. Add a measured amount of suitable warm stock and continue cooking, then re-check the grains.',
+    'raw|ok':'Sauce is fine but the centre is not done. Continue cooking in short steps and taste between each. Do not rely on the timer.',
+    'broken':'Broken grains cannot be restored, and more cooking makes it worse. Stop aggressive mixing and only adjust consistency if possible. Next time, control time, speed and mixing, and check doneness early.'
+  };
+  function diag(){
+    var key=grain.value==='broken'?'broken':grain.value+'|'+sauce.value;
+    dout.textContent=advice[key];
+  }
+  grain.addEventListener('change',diag);
+  sauce.addEventListener('change',diag);
+  diag();
+})();
+</script>
+</body>
+</html>
